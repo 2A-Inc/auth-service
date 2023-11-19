@@ -1,3 +1,6 @@
+server:
+  port: 8090
+
 spring:
   r2dbc:
     url: r2dbc:postgresql://localhost:6441/tcebi
@@ -7,3 +10,16 @@ spring:
     url: jdbc:postgresql://localhost:6441/tcebi
     user: root
     password: 123456
+
+tcebi:
+  security:
+    password_encoder:
+      secret: 2y10Df7Fegu300OwuZnR.Xqbe.JGvuzdFX6FZwWxdQah.dQEsONVfrZy
+      iteration: 64
+      keylength: 256
+jwt:
+  token:
+    secret: egu300OwuZnfrZyqbeFX6FZwWxdQah2y10Df7FRdQEsONV
+    issuer: tcebi
+    expiration: 3600
+
