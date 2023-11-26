@@ -1,5 +1,6 @@
 package com.twoa.tcebi.securiry.token;
 
+import com.twoa.tcebi.exception.exception.UnauthorizedException;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import lombok.RequiredArgsConstructor;
@@ -13,8 +14,8 @@ public class VerificationHandler {
     private final String secret;
 
     public Mono<VerificationResult> check(String accessToken) {
-        return Mono.just(verify(accessToken));
-               // .onErrorResume(e -> Mono.error(new UnauthorizedException(e.getMessage())));
+        return Mono.just(verify(accessToken))
+                .onErrorResume(e -> Mono.error(new UnauthorizedException(e.getMessage())));
     }
 
     private VerificationResult verify(String token) {

@@ -1,6 +1,7 @@
 package com.twoa.tcebi.securiry;
 
 import com.twoa.tcebi.domain.entity.UserEntity;
+import com.twoa.tcebi.exception.exception.AuthException;
 import com.twoa.tcebi.securiry.password_encoder.PBKDF2PasswordEncoder;
 import com.twoa.tcebi.securiry.token.TokenDetails;
 import com.twoa.tcebi.service.user_registration.UserService;
@@ -68,14 +69,14 @@ public class SecurityService {
 //                        return Mono.error(new AuthException("Account disabled", "PROSELYTE_USER_ACCOUNT_DISABLED"));
 //                    }
 
-//                    if (!passwordEncoder.matches(password, user.getPassword())) {
-//                        return Mono.error(new AuthException("Invalid password", "PROSELYTE_INVALID_PASSWORD"));
-//                    }
+                    if (!passwordEncoder.matches(password, user.getPassword())) {
+                        return Mono.error(new AuthException("Invalid password", "PROSELYTE_INVALID_PASSWORD"));
+                    }
 
                     return Mono.just(generateToken(user).toBuilder()
                             .userId(user.getId())
                             .build());
-                });
-               // .switchIfEmpty(Mono.error(new AuthException("Invalid username", "PROSELYTE_INVALID_USERNAME")));
+                })
+                .switchIfEmpty(Mono.error(new AuthException("Invalid username", "PROSELYTE_INVALID_USERNAME")));
     }
 }

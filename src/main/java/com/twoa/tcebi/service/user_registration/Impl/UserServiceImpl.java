@@ -84,7 +84,4 @@ public class UserServiceImpl implements UserService {
         userEntity.setNew(false);
         return userEntity;
     }
-
-
-
 }
