@@ -66,17 +66,17 @@ public class SecurityService {
         return userService.findByEmail(username)
                 .flatMap(user -> {
 //                    if (!user.isEnabled()) {
-//                        return Mono.error(new AuthException("Account disabled", "PROSELYTE_USER_ACCOUNT_DISABLED"));
+//                        return Mono.error(new AuthException("Account disabled", "USER_ACCOUNT_DISABLED"));
 //                    }
 
                     if (!passwordEncoder.matches(password, user.getPassword())) {
-                        return Mono.error(new AuthException("Invalid password", "PROSELYTE_INVALID_PASSWORD"));
+                        return Mono.error(new AuthException("Invalid password", "INVALID_PASSWORD"));
                     }
 
                     return Mono.just(generateToken(user).toBuilder()
                             .userId(user.getId())
                             .build());
                 })
-                .switchIfEmpty(Mono.error(new AuthException("Invalid username", "PROSELYTE_INVALID_USERNAME")));
+                .switchIfEmpty(Mono.error(new AuthException("Invalid username", "INVALID_USERNAME")));
     }
 }
