@@ -1,7 +1,7 @@
 package com.twoa.tcebi.rest.auth;
 
 import com.twoa.tcebi.domain.dto.user.*;
-import com.twoa.tcebi.domain.entity.UserEntity;
+import com.twoa.tcebi.mapper.refresh_token.RefreshTokenMapper;
 import com.twoa.tcebi.mapper.user.UserMapper;
 import com.twoa.tcebi.securiry.CustomPrincipal;
 import com.twoa.tcebi.securiry.SecurityService;
@@ -18,6 +18,7 @@ public class AuthRestControllerV1 {
     private final SecurityService securityService;
     private final UserService userService;
     private final UserMapper userMapper;
+    private final RefreshTokenMapper refreshTokenMapper;
 
 
     @PostMapping("/register")
@@ -33,6 +34,7 @@ public class AuthRestControllerV1 {
                         UserAuthResponseDto.builder()
                                 .id(tokenDetails.getUserId())
                                 .token(tokenDetails.getToken())
+                                .refreshToken(refreshTokenMapper.mapToDto(tokenDetails.getRefreshToken()))
                                 .issuedAt(tokenDetails.getIssuedAt())
                                 .expiresAt(tokenDetails.getExpiresAt())
                                 .build()

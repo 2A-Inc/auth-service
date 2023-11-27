@@ -2,7 +2,7 @@ package com.twoa.tcebi.service.user_registration.Impl;
 
 import com.twoa.tcebi.domain.dto.user.UserRegistrationRequestDto;
 import com.twoa.tcebi.domain.dto.user.UserUpdateRequestDto;
-import com.twoa.tcebi.domain.entity.UserEntity;
+import com.twoa.tcebi.domain.entity.users.UserEntity;
 import com.twoa.tcebi.domain.enums.UserRole;
 import com.twoa.tcebi.mapper.user.UserMapper;
 import com.twoa.tcebi.repository.user_repository.UsersRepository;

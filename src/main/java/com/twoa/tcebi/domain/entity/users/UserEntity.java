@@ -1,4 +1,4 @@
-package com.twoa.tcebi.domain.entity;
+package com.twoa.tcebi.domain.entity.users;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

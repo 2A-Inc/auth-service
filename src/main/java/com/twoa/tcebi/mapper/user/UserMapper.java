@@ -3,9 +3,8 @@ package com.twoa.tcebi.mapper.user;
 import com.twoa.tcebi.domain.dto.user.UserRegistrationRequestDto;
 import com.twoa.tcebi.domain.dto.user.UserRegistrationResponseDto;
 import com.twoa.tcebi.domain.dto.user.UserResponseDto;
-import com.twoa.tcebi.domain.entity.UserEntity;
+import com.twoa.tcebi.domain.entity.users.UserEntity;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
 public interface UserMapper {

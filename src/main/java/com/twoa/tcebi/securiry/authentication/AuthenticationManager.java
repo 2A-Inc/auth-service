@@ -1,6 +1,5 @@
 package com.twoa.tcebi.securiry.authentication;
 
-import com.twoa.tcebi.domain.entity.UserEntity;
 import com.twoa.tcebi.exception.exception.UnauthorizedException;
 import com.twoa.tcebi.securiry.CustomPrincipal;
 import com.twoa.tcebi.service.user_registration.UserService;
